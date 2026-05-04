@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ObjectOracle MVP</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 760px; margin: 2rem auto; padding: 0 1rem; }
+    .card { border: 1px solid #ddd; border-radius: 12px; padding: 1rem; }
+    .poem { white-space: pre-wrap; line-height: 1.8; background: #fafafa; padding: 1rem; border-radius: 8px; }
+    .error { color: #b00020; }
+    button { padding: .6rem 1rem; border-radius: 8px; border: 1px solid #111; background: #111; color: #fff; }
+  </style>
+</head>
+<body>
+  <h1>ObjectOracle（MVP）</h1>
+  <p>画像をアップロードすると、AIが哲学的な詩に変換します。</p>
+
+  <div class="card">
+    <form method="post" enctype="multipart/form-data">
+      <input type="file" name="image" accept="image/*" required />
+      <button type="submit">詩を生成する</button>
+    </form>
+  </div>
+
+  {% if error %}
+    <p class="error">{{ error }}</p>
+  {% endif %}
+
+  {% if poem %}
+    <h2>生成された詩</h2>
+    <div class="poem">{{ poem }}</div>
+  {% endif %}
+</body>
+</html>
